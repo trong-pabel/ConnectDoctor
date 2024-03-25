@@ -11,9 +11,9 @@
     "fullstack",
     "nodejs",
     "express",
-    "luuvannhat"
+    "trong"
   ],
-  "author": "luuvannhat",
+  "author": "trong",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
