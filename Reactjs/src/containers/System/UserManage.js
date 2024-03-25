@@ -126,7 +126,7 @@ class UserManage extends Component {
 
                 }
 
-                <div className='title text-center'>Manage users with Eric</div>
+                <div className='title text-center'>Manage users</div>
                 <div className='mx-1'>
                     <button className='btn btn-primary px-3'
                         onClick={() => this.handleAddNewUser()}
@@ -136,6 +136,7 @@ class UserManage extends Component {
                     <table id="customers">
                         <tbody>
                             <tr>
+                                <th>No.</th>
                                 <th>Email</th>
                                 <th>First name</th>
                                 <th>Last name</th>
@@ -146,6 +147,8 @@ class UserManage extends Component {
                             {arrUsers && arrUsers.map((item, index) => {
                                 return (
                                     <tr key={index}>
+                                        <td>{index + 1}</td>  {/* Display the index + 1 for numbering */}
+
                                         <td>{item.email}</td>
                                         <td>{item.firstName}</td>
                                         <td>{item.lastName}</td>

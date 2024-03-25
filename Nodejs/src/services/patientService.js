@@ -85,7 +85,7 @@ let postBookAppointment = (data) => {
                         })
                     }
                     await emailService.sendSimpleEmail({
-                        reciversEmail: data.email,
+                        receiverEmail: data.email,
                         patientName: data.fullName,
                         time: data.timeString,
                         doctorName: data.doctorName,

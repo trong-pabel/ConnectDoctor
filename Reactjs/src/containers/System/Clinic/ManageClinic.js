@@ -71,26 +71,56 @@ class ManageClinic extends Component {
         }
     }
 
+    // handleSaveNewClinic = async () => {
+
+    //     let res = await createNewClinic({
+    //         name: this.state.name,
+    //         imageBase64: this.state.imageBase64,
+    //         descriptionHTML: this.state.descriptionHTML,
+    //         descriptionMarkdown: this.state.descriptionMarkdown,
+
+    //         });
+    //     if (res && res.errCode === 1) {
+
+    //         this.setState(
+    //             {
+    //                 name: '',
+    //                 imageBase64: '',
+    //                 address: '',
+    //                 descriptionHTML: '',
+    //                 descriptionMarkdown: '',
+    //                 dataClinic: this.state.dataClinic,
+    //             }
+    //         )
+    //         window.location.reload();
+    //         toast.success('Add new clinic succeed!');
+    //     } else {
+    //         toast.error('Something wrong handleSaveNewClinic....!');
+    //     }
+
+    // }
+
     handleSaveNewClinic = async () => {
+        let res = await createNewClinic(this.state)
 
-        let res = await createNewClinic(this.state);
+        console.log(res)
+        console.log("test")
+       
         if (res && res.errCode === 0) {
+            
+            this.setState({
+                name: '',
+                imageBase64: '',
+                descriptionHTML: '',
+                descriptionMarkdown: '',
+                dataClinic: this.state.dataClinic,
+            })
             toast.success('Add new clinic succeed!');
-            this.setState(
-                {
-                    name: '',
-                    imageBase64: '',
-                    address: '',
-                    descriptionHTML: '',
-                    descriptionMarkdown: '',
-                    dataClinic: this.state.dataClinic,
-                }
-            )
             window.location.reload();
-        } else {
-            toast.error('Somthing wrong....!');
-        }
 
+        } else {
+            toast.error('Something wrong....!');
+        }
     }
 
     handleUpdateClinic = async () => {
@@ -115,7 +145,7 @@ class ManageClinic extends Component {
             toast.success('Update clinic succeed!');
             window.location.reload();
         } else {
-            toast.error('Somthing wrong....!');
+            toast.error('Something wrong....!');
         }
 
     }
@@ -144,7 +174,7 @@ class ManageClinic extends Component {
             toast.success('delete  clinic succeed!');
             window.location.reload();
         } else {
-            toast.error('Somthing wrong....!');
+            toast.error('Something wrong....!');
         }
     }
     render() {
@@ -193,6 +223,7 @@ class ManageClinic extends Component {
                         <table id='TableManageSpecialty'>
                             <tbody>
                                 <tr>
+                                    <th>No.</th>
                                     <th>Clinic name</th>
                                     <th>Address</th>
                                     <th>Actions</th>
@@ -201,6 +232,7 @@ class ManageClinic extends Component {
                                     dataClinic.map((item, index) => {
                                         return (
                                             <tr key={index}>
+                                                <td>{index + 1}</td>  {/* Display the index + 1 for numbering */}
                                                 <td>{item.name}</td>
                                                 <td>{item.address}</td>
                                                 <td>

@@ -16,8 +16,8 @@ class About extends Component {
                 </div>
                 <div className='section-about-content'>
                     <div className='content-left'>
-                        <iframe width="100%" height="400px" src="https://www.youtube.com/embed/1sHF_Fa9-0E"
-                            title="CÀ PHÊ KHỞI NGHIỆP VTV1 - BOOKING CARE - KHÁM BỆNH THỜI CÔNG NGHỆ"
+                        <iframe width="100%" height="400px" src="https://www.youtube.com/embed/5017btsn9DQ"
+                            title="KHÁM CHỮA BỆNH TẠI NHÀ THỜI COVID"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowFullScreen>
