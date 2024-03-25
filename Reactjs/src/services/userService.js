@@ -72,10 +72,10 @@ const postCancelBookAppointment = (data) => {
 }
 
 // ================================ Specialty =============================
-const createNewSpecialty = (data) => {
-    return axios.post('/api/create-new-specialty', data);
+const createNewSpecialty = (inputData) => {
+    return axios.post('/api/create-new-specialty', inputData);
 }
-
+ 
 const getAllSpecialty = () => {
     return axios.get(`/api/get-specialty`);
 }
@@ -87,7 +87,7 @@ const deleteSpecialty = (specialtyId) => {
         }
     });
 }
-
+ 
 const getDetailSpecialtyById = (data) => {
     return axios.get(`/api/get-detail-specialty-by-id?id=${data.id}&location=${data.location}`);
 }

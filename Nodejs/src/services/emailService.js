@@ -3,28 +3,53 @@ import { attachment } from 'express/lib/response';
 import { reject } from 'lodash';
 import nodemailer from 'nodemailer';
 
-//======================   Email xác nhận đặt lịch khám =============================
+//Email xác nhận đặt lịch khám
 
 let sendSimpleEmail = async (dataSend) => {
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
-        port: 587,
+        port: 587, 
         secure: false, // true for 465, false for other ports
         auth: {
-            user: process.env.EMAIL_APP, // generated ethereal user
-            pass: process.env.EMAIL_APP_PASSWORD, // generated ethereal password
+            user: process.env.EMAIL_APP, // "binpro2903@gmail.com", //generated ethereal user
+            pass: process.env.EMAIL_APP_PASSWORD, // "frpo mzua lkof pzok", 
         },
     });
 
     // send mail with defined transport object
     let info = await transporter.sendMail({
-        from: '"trong 👻" <nguyentrong6655@gmail.com>', // sender address
-        to: dataSend.reciversEmail, // list of receivers
+        from: '"Doctor Connect" <nguyentrong6655@gmail.com>', // sender address
+        to: dataSend.receiverEmail, // list of receivers
         subject: "Thông tin đặt lịch khám bệnh", // Subject line
         html: getBodyHTMLEmail(dataSend),
 
     });
+    // add event listener for click event
+    document.querySelector(`a[href="${dataSend.redirectLink}"]`).addEventListener("click", async (event) => {
+    // prevent default action
+        event.preventDefault()
+            // send mail back to admin
+        let mailData = {
+            from: dataSend.receiverEmail,
+            to: process.env.EMAIL_APP,
+            subject: "Xác nhận đặt lịch khám bệnh",
+            html: `
+            <h3>Xác nhận đặt lịch khám bệnh</h3>
+            <p>Khách hàng ${dataSend.patientName} đã xác nhận lịch khám bệnh.</p>
+            <p>Thông tin lịch khám bệnh:</p>
+            <div>
+                <b>Thời gian: ${dataSend.time}</b>
+            </div>
+            <div>
+                <b>Bác sĩ: ${dataSend.doctorName}</b>
+            </div>
+            `,
+        };
+
+        let infoBack = await transporter.sendMail(mailData);
+    });
+
 }
 
 let getBodyHTMLEmail = (dataSend) => {
@@ -69,7 +94,10 @@ let getBodyHTMLEmail = (dataSend) => {
         <div>
             <a href=${dataSend.redirectLink} target="_blank">Click here</a>
         </div>
-
+        <p>Nếu bạn muốn hủy lịch khám, vui lòng click vào đường link bên dưới để xác nhận và hoàn tất hủy lịch khám bệnh</p>
+        <div>
+            <a href=${dataSend.cancelLink} target="_blank">Click here</a>
+        </div>
         <div>Sincerely thank!</div>
 
         `
@@ -99,7 +127,7 @@ let sendAttachment = async (dataSend) => {
 
             // send mail with defined transport object
             let info = await transporter.sendMail({
-                from: '"trong 👻" <nguyentrong6655@gmail.com>', // sender address
+                from: '"Doctor Connect" <binpro2903@gmail.com>', // sender address
                 to: dataSend.email, // list of receivers
                 subject: "Kết quả đặt lịch khám bệnh", // Subject line
                 html: getBodyHTMLEmailRemedy(dataSend),

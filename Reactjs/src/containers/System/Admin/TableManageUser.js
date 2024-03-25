@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from "../../../store/actions";
 import './TableManageUser.scss';
 import { toast } from 'react-toastify';
+import { USER_ROLE } from '../../../utils/constant.js';
 
 //===========================================
 import MarkdownIt from 'markdown-it';
@@ -59,9 +60,11 @@ class TableManageUser extends Component {
                 <table id='TableManageUser'>
                     <tbody>
                         <tr>
+                            <th>No.</th>
                             <th>Email</th>
                             <th>First name</th>
                             <th>Last name</th>
+                            <th>Role</th>
                             <th>Address</th>
                             <th>Actions</th>
                         </tr>
@@ -69,9 +72,11 @@ class TableManageUser extends Component {
                             arrUsers.map((item, index) => {
                                 return (
                                     <tr key={index}>
+                                        <td>{index + 1}</td>  {/* Display the index + 1 for numbering */}
                                         <td>{item.email}</td>
                                         <td>{item.firstName}</td>
                                         <td>{item.lastName}</td>
+                                        <td>{item.roleId === "R1" ? "Quản trị viên" : item.roleId === "R2" ? "Bác sĩ" : "Bệnh nhân"}</td>
                                         <td>{item.address}</td>
                                         <td>
                                             <button

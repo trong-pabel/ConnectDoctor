@@ -12,8 +12,8 @@
         "welcome": "Xin chào, "
     },
     "banner": {
-        "title1": "NỀN TẢNG Y TẾ",
-        "title2": "CHĂM SÓC SỨC KHỎE TOÀN DIỆN",
+        "title1": "KHÁM BỆNH TRỰC TUYẾN",
+        "title2": "ĐẶT LỊCH HẸN TẠI NHÀ",
         "child1": "Khám chuyên khoa",
         "child2": "Khám từ xa",
         "child3": "Khám tổng quát",
@@ -29,8 +29,8 @@
         "title1": "Cơ sở y tế"
     },
     "about": {
-        "title1": "Truyền thông nói gì về Bookingcare",
-        "title2": "Chương trình cà phê khởi nghiệp của VTV1 - Đài truyền hình Việt Nam giới thiệu Nền tảng đặt khám bác sĩ chuyên khoa BookingCare. BookingCare là một hệ thống đặt lịch khám giúp người bệnh dễ dàng lựa chọn bác sĩ chuyên khoa phù hợp dựa trên mạng lưới các bác sĩ chuyên khoa, thông tin được xác thực rõ ràng, minh bạch hóa các thông tin liên quan đến hoạt động khám chữa bệnh: thời gian, quy trình, giá cả dịch vụ, trang thiết bị, bảo hiểm, địa chỉ, kinh nghiệm, đào tạo của bác sĩ…"
+        "title1": "Truyền thông nói gì về DoctorConnect",
+        "title2": " "
     },
     "menu": {
         "admin": {

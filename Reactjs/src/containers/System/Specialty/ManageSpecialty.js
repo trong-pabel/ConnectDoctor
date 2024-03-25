@@ -72,22 +72,48 @@ class ManageSpecialty extends Component {
         }
     }
 
+    // handleSaveNewSpecialty = async () => {
+    //     let res = await createNewSpecialty(this.state);
+    //     if (res && res.errCode === 1) {
+    //         toast.success('Add new specialty succeed!');
+    //         this.setState(
+    //             {
+    //                 name: '',
+    //                 imageBase64: '',
+    //                 descriptionHTML: '',
+    //                 descriptionMarkdown: '',
+    //                 dataSpecialty: this.state.dataSpecialty,
+    //             }
+    //         )
+    //         //window.location.reload();
+    //     } else {
+    //         toast.error('Something wrong savenewspecialy....!');
+    //     }
+
+    // }
     handleSaveNewSpecialty = async () => {
-        let res = await createNewSpecialty(this.state);
+        let res = await createNewSpecialty(this.state)
+// leenhj check các điều kiện khi mà success hay wrong ở đây
+// res đó là để chạy qua bên cạnh nè gọi api về sử dụng phương
+// thức post để đẩy dữ liệu lên nếu như nó đúng là this.state
+//thì nó sẽ đúng và cho  phép cập nhật
+        console.log(res)
+        console.log("test")
+       
         if (res && res.errCode === 0) {
+            
+            this.setState({
+                name: '',
+                imageBase64: '',
+                descriptionHTML: '',
+                descriptionMarkdown: '',
+                dataSpecialty: this.state.dataSpecialty,
+            })
             toast.success('Add new specialty succeed!');
-            this.setState(
-                {
-                    name: '',
-                    imageBase64: '',
-                    descriptionHTML: '',
-                    descriptionMarkdown: '',
-                    dataSpecialty: this.state.dataSpecialty,
-                }
-            )
             window.location.reload();
+
         } else {
-            toast.error('Somthing wrong....!');
+            toast.error('Something wrong....!');
         }
 
     }
@@ -111,7 +137,7 @@ class ManageSpecialty extends Component {
             })
             toast.success('Update specialty succeed!');
         } else {
-            toast.error('Somthing wrong....!');
+            toast.error('Something wrong....!');
         }
 
     }
@@ -140,7 +166,7 @@ class ManageSpecialty extends Component {
             toast.success('delete  specialty succeed!');
             window.location.reload();
         } else {
-            toast.error('Somthing wrong....!');
+            toast.error('Something wrong....!');
         }
     }
     render() {

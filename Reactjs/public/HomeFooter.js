@@ -12,8 +12,8 @@ class HomeFooter extends Component {
 
         return (
             <div className='home-footer'>
-                <p>&copy; 2023 Trong Huu.
-                    {/* <a target='_blank' href='https://www.youtube.com/watch?v=7tiR7SI4CkI'> &#8594; Click here &#8592;</a> */}
+                <p>&copy; 2023 Trong Huu. More information, please visit my youtube channel.
+                    <a target='_blank' href='https://www.youtube.com/watch?v=7tiR7SI4CkI'> &#8594; Click here &#8592;</a>
                 </p>
             </div>
         );
